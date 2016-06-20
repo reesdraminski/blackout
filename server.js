@@ -10,15 +10,33 @@ app.use('/public', express.static('public'));
 
 // Express Routes
 app.get('/', function (req, res) {
-  var story = "The daughter had just uttered some simple jest that filled them all with mirth, when the wind came through the Notch and seemed to pause before their cottage rattling the door, with a sound of wailing and lamentation, before it passed into the valley. For a moment it saddened them, though there was nothing unusual in the tones. But the family were glad again when they perceived that the latch was lifted by some traveller, whose footsteps had been unheard amid the dreary blast which heralded his approach, and wailed as he was entering, and went moaning away from the door.";
-  var words = story.split(" ");
+    // Web Scraping dependencies
+    var cheerio = require('cheerio');
+    var request = require('request');
 
-  res.render('create', {
-    "words": words
-  });
+    // Get a random poem from poetry.net
+    request("http://poetry.net", function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        // Get poem text
+        var $ = cheerio.load(body);
+        var poem = $('#disp-quote-body').text();
+
+        // Get poem title and author
+        var title = $('#disp-poem-title a').text();
+        var author = $('#disp-quote-author-meta p.author').text();
+
+        // Pass information to the Jade template
+        var words = poem.split(" ");
+        res.render('create', {
+          "title": title,
+          "author": author,
+          "words": words
+        });
+      }
+    });
 });
 
-// Route to vote for specific position
+// Route to vote for specific post
 app.get('/post/:id', function(req, res) {
   var id = req.params.id;
 

@@ -4,12 +4,11 @@ $(document).ready(function() {
     // get highlight color
     var color = $(this).css('background-color');
 
-    // If highlight is white, make it black
-    if (color == "rgba(0, 0, 0, 0)")
-      $(this).css('background-color', 'black');
     // If highlight is black, make it white
-
-    else if (color == "rgb(0, 0, 0)")
+    if (color == "rgb(0, 0, 0)")
       $(this).css('background-color', 'white');
+    // If highlight is white, make it black
+    else
+      $(this).css('background-color', 'black');
   });
 });
