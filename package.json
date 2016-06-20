@@ -1,0 +1,18 @@
+{
+  "name": "blackout",
+  "version": "0.0.0",
+  "description": "Create blackout poetry from a random page of a random book.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/reesdraminski/blackout.git"
+  },
+  "author": "Rees Draminski <rees.draminski@gmail.com> (http://www.reesdraminski.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reesdraminski/blackout/issues"
+  }
+}

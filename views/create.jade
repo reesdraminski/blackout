@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    title blackout
+    link(rel="stylesheet", href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js")
+    script(src="/public/js/blackout.js")
+    style.
+      a {font-size: 20px; color: black; text-decoration: none !important; color: black !important; word-wrap: break-word;}
+  body
+    h1 <center>create a blackout poem</center>
+    .container
+      each word in words
+        a(href="#") #{word}&nbsp;
